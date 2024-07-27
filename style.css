@@ -41,7 +41,7 @@ body{
     font-size: 40px;
     height: min-content;
     align-self: center;
-    width: 100%;
+    width: inherit;
     text-align: center;
 }
 
@@ -111,4 +111,91 @@ button{
 .addicondiv>svg:hover{
     cursor: pointer;
     fill: gray;
+}
+
+dialog{
+    width: 450px;
+    height: 580px;
+    margin: 100px auto 0px auto;
+    overflow: visible;
+    border: none;
+}
+
+.formheader{
+    background-color:#fa8072;
+    text-align: center;
+    padding: 23.4px;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    font-size: 23.4px;
+}
+
+.formheader>h3{
+    color: white;
+}
+
+form{
+    border: none;
+    height: 100%;
+}
+
+.formrow{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 23px;
+    margin: 20px auto 0px auto;
+}
+
+input{
+    padding: 13px;
+    font-size: 20px;
+    width: 330px;
+}
+
+.formcontent{
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    align-items: center;
+    background-color: #f2ece4;
+}
+
+textarea{
+    width: 330px;
+    padding: 13px;
+    height:130px;
+    resize: none;
+}
+
+.btnrow{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.addbtn{
+    width: 150px;
+    border: 2px solid #455d7a;
+    color: black;
+}
+
+.cancelbtn{
+    width: 100px;
+    border: 2px solid salmon;
+    color: black;
+}
+
+.addbtn:hover{
+    background-color: #455d7a;
+    color: white;
+}
+
+.cancelbtn:hover{
+    background-color:salmon;
+    color: white;
 }

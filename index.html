@@ -12,7 +12,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path  d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
             </div>
-            <h1 class="heading">Todo</h1>
+            <h1 class="heading">Todoozie</h1>
         </div>
         <div class="sidebar">
             <div class="buttons">
@@ -28,6 +28,34 @@
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
                   </svg>
             </div>
+            <div class="dialogcontainer"> 
+                <dialog>
+                    <form action="#" method="#">
+                        <div class="formheader">
+                            <h3>Add Todo</h3>
+                        </div>
+                        <div class="formcontent">
+                            <div class="formrow $1">
+                                <label for="title">Title</label>
+                                <input type="text" id="title" placeholder="An Awesome Title!">
+                            </div>
+                            <div class="formrow $2">
+                                <label for="description">Description</label>
+                                <textarea name="Description" id="description"></textarea>
+                            </div>
+                            <div class="formrow $3">
+                                <label for="duedate">Due Date</label>
+                                <input type="date" name="duedate" id="duedate">
+                            </div>
+                            <div class="btnrow $4">
+                                <button class="addbtn" type="submit">Add Todo</button>
+                                <button class="cancelbtn" type="generic">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
         </div>
+            
     </body>
 </html>
