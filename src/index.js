@@ -1,5 +1,7 @@
 import { sortarray } from "./sort";
 import { render } from "./render";
+
+
 const menubar = document.querySelector('.menusvg');
 const sidebar = document.querySelector('.sidebar');
 const maincontent = document.querySelector('.maincontent');
@@ -8,11 +10,16 @@ const plusbutton = document.querySelector('.addicondiv');
 const dialog = document.querySelector('dialog');
 const cancel = document.querySelector('.cancelbtn');
 const addform = document.querySelector('.addbtn');
+const renderdiv = document.querySelector(".todolist");
+
+
 let listarray = [];
 let titleinput = document.querySelector('#title');
 let duedateinput = document.querySelector('#duedate');
 let descriptioninput = document.querySelector('#description');
-const renderdiv = document.querySelector(".todolist");
+let strlistarray;
+let checkarray;
+
 
 class listobj{
     constructor(title,due_date){
@@ -20,6 +27,7 @@ class listobj{
         this.due_date = due_date;
     }
 }
+
 
 // To make sidebar open and collapse when menu button is pressed
 menubar.addEventListener('click',function(){
@@ -47,12 +55,23 @@ for (let button of sidebarbuttons){
     })
 }
 
+
 // To add Todo's
 plusbutton.addEventListener('click',()=>dialog.showModal());
+
 
 // To close form
 
 cancel.addEventListener('click',()=>dialog.close());
+
+
+// To update data from listarray to local storage
+
+function updatetolocalstorage(){
+    strlistarray = JSON.stringify(listarray);
+    localStorage.setItem('mykey',strlistarray);
+}
+
 
 // To retrieve data entered submitted to the form
 
@@ -65,17 +84,35 @@ addform.addEventListener('click',function(event){
     titleinput.value = '';
     duedateinput.value = '';
     descriptioninput.value= '';
+    updatetolocalstorage();
     render(listarray);
-
-    
-    // To remove item when trash icon is pressed
-    const bins = document.querySelectorAll('.trash'); 
-    for (let bin of bins){
-        bin.addEventListener('click',function(e){
-            let index = this.classList[1][1];
-            listarray.splice(index,1);
-            render(listarray);
-        })
-    }
 })
 
+
+// Function to handle trash bin clicks
+function handleTrashClick(e) {
+    if (e.target.classList.contains('trash')) {
+        let index = e.target.classList[1][1]; 
+        listarray.splice(index, 1); 
+        updatetolocalstorage(); 
+        render(listarray); 
+    }
+}
+
+
+// So that handleTrashClick gets called
+renderdiv.addEventListener('click', handleTrashClick); 
+
+
+// To load data from local storage when the page loads
+document.addEventListener('DOMContentLoaded',function(){
+
+    checkarray=localStorage.getItem('mykey');
+    if (checkarray){
+        listarray = JSON.parse(checkarray);
+    }
+    else{
+        listarray = [];
+    }
+    render(listarray);
+})
