@@ -11,9 +11,8 @@ const addform = document.querySelector('.addbtn');
 let listarray = [];
 let titleinput = document.querySelector('#title');
 let duedateinput = document.querySelector('#duedate');
-let desrciptioninput = document.querySelector('#description');
+let descriptioninput = document.querySelector('#description');
 const renderdiv = document.querySelector(".todolist");
-
 
 class listobj{
     constructor(title,due_date){
@@ -65,8 +64,18 @@ addform.addEventListener('click',function(event){
     listarray = sortarray(listarray);
     titleinput.value = '';
     duedateinput.value = '';
-    desrciptioninput.value= '';
+    descriptioninput.value= '';
     render(listarray);
-})
 
+    
+    // To remove item when trash icon is pressed
+    const bins = document.querySelectorAll('.trash'); 
+    for (let bin of bins){
+        bin.addEventListener('click',function(e){
+            let index = this.classList[1][1];
+            listarray.splice(index,1);
+            render(listarray);
+        })
+    }
+})
 

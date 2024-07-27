@@ -97,12 +97,11 @@ button{
 }
 
 .addicondiv{
-    width: 100%;
     height: max-content;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 20px;
+    width: 30px;
 }
 
 .addicondiv>svg{
@@ -239,3 +238,6 @@ textarea{
     width: 25px;
 }
 
+.trash:hover{
+    cursor: pointer;
+}
