@@ -1,16 +1,33 @@
+import { sortarray } from "./sort";
+import { render } from "./render";
 const menubar = document.querySelector('.menusvg');
 const sidebar = document.querySelector('.sidebar');
 const maincontent = document.querySelector('.maincontent');
 const sidebarbuttons = document.querySelectorAll('.buttons>button');
 const plusbutton = document.querySelector('.addicondiv');
 const dialog = document.querySelector('dialog');
+const cancel = document.querySelector('.cancelbtn');
+const addform = document.querySelector('.addbtn');
+let listarray = [];
+let titleinput = document.querySelector('#title');
+let duedateinput = document.querySelector('#duedate');
+let desrciptioninput = document.querySelector('#description');
+const renderdiv = document.querySelector(".todolist");
 
+
+class listobj{
+    constructor(title,due_date){
+        this.title = title;
+        this.due_date = due_date;
+    }
+}
 
 // To make sidebar open and collapse when menu button is pressed
 menubar.addEventListener('click',function(){
     sidebar.classList.toggle('visible')
     maincontent.classList.toggle('adjustmaincontent')
 })
+
 
 // To make the button that was recently clicked change font and bg color
 for (let button of sidebarbuttons){
@@ -31,4 +48,25 @@ for (let button of sidebarbuttons){
     })
 }
 
-plusbutton.addEventListener('click',()=>dialog.showModal())
+// To add Todo's
+plusbutton.addEventListener('click',()=>dialog.showModal());
+
+// To close form
+
+cancel.addEventListener('click',()=>dialog.close());
+
+// To retrieve data entered submitted to the form
+
+addform.addEventListener('click',function(event){
+    event.preventDefault();
+    let obj = new listobj(titleinput.value,duedateinput.value);
+    listarray.push(obj);
+    dialog.close();
+    listarray = sortarray(listarray);
+    titleinput.value = '';
+    duedateinput.value = '';
+    desrciptioninput.value= '';
+    render(listarray);
+})
+
+

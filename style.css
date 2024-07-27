@@ -41,9 +41,11 @@ body{
     font-size: 40px;
     height: min-content;
     align-self: center;
-    width: inherit;
+    font-family: sans-serif;
+    width: 100%;
     text-align: center;
 }
+
 
 .visible{
     background-color: #233142;
@@ -116,7 +118,7 @@ button{
 dialog{
     width: 450px;
     height: 580px;
-    margin: 100px auto 0px auto;
+    margin: 110px auto 0px auto;
     overflow: visible;
     border: none;
 }
@@ -167,6 +169,7 @@ textarea{
     padding: 13px;
     height:130px;
     resize: none;
+    font-size: 21px;
 }
 
 .btnrow{
@@ -193,9 +196,46 @@ textarea{
 .addbtn:hover{
     background-color: #455d7a;
     color: white;
+    cursor: pointer;
 }
 
 .cancelbtn:hover{
     background-color:salmon;
     color: white;
+    cursor: pointer;
 }
+
+.todolist{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.listitem{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    height: 40px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    background-color: #233142;
+}
+
+.todolist>span{
+    color: white;
+    font-size: 24px;
+}
+
+.todolist>svg{
+    fill: white;
+    height: 25px;
+    width: 25px;
+}
+
